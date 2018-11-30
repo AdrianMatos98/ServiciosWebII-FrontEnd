@@ -1,0 +1,16 @@
+.my-btn{
+    margin: 5px;
+    float: right;
+}
+.my-title{
+    text-align: center;
+    margin-top: 20px;
+}
+button.calendar, button.calendar:active {
+    width: 2.75rem;
+    /*background-image: url("app/imagenes/calendario.png");*/
+    background-repeat: no-repeat;
+    background-size: 23px;
+    background-position: center;
+  }
+  

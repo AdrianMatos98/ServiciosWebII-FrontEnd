@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="col-md-12">
+    <h2 class="text-center">Informacion del pedido</h2>
+    <button [routerLink]="['/home']" class="btn btn-primary my-btn"> Volver</button>
+    <button class="btn btn-primary my-btn" [routerLink]="['/list-categoria-pedido']"> Agregar</button>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th colspan="3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detallePedido of pedido.detallePedido">
+          <td>{{detallePedido.platillo.nombre}}</td>
+          <td>S/. {{detallePedido.platillo.precio}}</td>
+          <td>{{detallePedido.cantidad}}</td>
+          <td>S/. {{pedido.total}}</td>
+          <td><button (click)="EliminarPlatilloAPedido(detallePedido)" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Total : {{pedido.total}}</h3>
+    <form [formGroup]="RealizarPedidoForm" (ngSubmit)="RealizarPedido()">
+      <div class="form-group">
+        <label for="NumeroTarjeta">Numero Tarjeta:</label>
+        <input type="text" formControlName="NumeroTarjeta" placeholder="Numero de tarjeta" name="NumeroTarjeta" class="form-control"
+          id="NumeroTarjeta">
+        <label for="TipoTarjeta">Tipo de tarjeta:</label>
+        <select name="TipoTarjeta" id="TipoTarjeta" class="custom-select form-control" formControlName="TipoTarjeta">
+          <option value="0" selected>Seleccione un tipo de tarjeta</option>
+          <option value="1">Visa</option>
+          <option value="2">MasterCard</option>
+          <option value="1">Discovery</option>
+        </select>
+        <label for="CodigoSeguridadTarjeta">CCV:</label>
+        <input type="text" formControlName="CodigoSeguridadTarjeta" placeholder="CVV" name="CodigoSeguridadTarjeta" class="form-control"
+          id="CodigoSeguridadTarjeta">
+        <label for="TitularTarjeta">Titular de la tarjeta:</label>
+        <input type="text" formControlName="TitularTarjeta" placeholder="Titular de la tarjeta" name="TitularTarjeta" class="form-control" id="TitularTarjeta">
+        <label for="MesExpiracionTarjeta">MesExpiracionTarjeta</label>
+        <input type="text" formControlName="MesExpiracionTarjeta" placeholder="##" name="MesExpiracionTarjeta" class="form-control" id="MesExpiracionTarjeta">
+        <label for="AñoExpiracionTarjeta">AñoExpiracionTarjeta</label>
+        <input type="text" formControlName="AñoExpiracionTarjeta" placeholder="####" name="AñoExpiracionTarjeta" class="form-control" id="AñoExpiracionTarjeta">
+        
+        <input type="hidden" formControlName="MontoConsumir" name="MontoConsumir" class="form-control" id="MontoConsumir">
+      </div>
+      <button class="btn btn-success">Confirmar</button>
+      <button [routerLink]="['home']" class="btn btn-danger">Cancelar</button>
+    </form>
+  </div>
+</div>

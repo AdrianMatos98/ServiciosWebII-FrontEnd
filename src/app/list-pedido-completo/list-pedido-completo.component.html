@@ -1,0 +1,25 @@
+<div class="container">
+
+    <div class="col-md-12">
+      <h2 class="my-title">Listado pedidos completo</h2>
+  
+  
+      <button [routerLink]="['/home']" class="btn btn-primary my-btn"> Volver</button>
+      <button class="btn btn-primary my-btn"> Recargar</button>
+      <table class="table">
+        <tbody>
+          <tr class="row">
+            <div  class="card col-md-4" *ngFor="let pedido of pedidos">
+              <div class="card-body">
+                <h5 class="card-title">#Pedido: {{pedido.codigo}}</h5>
+                <div *ngFor="let dp of pedido.detallePedido">
+                  <p class="card-text">Platillo: {{dp.platillo.nombre}}</p>
+                  <p class="card-text">Cantidad: {{dp.cantidad}}</p><br/>
+                </div>
+              </div>
+            </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

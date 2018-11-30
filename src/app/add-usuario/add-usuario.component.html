@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-md-12">
+    <h2 class="text-center">Agregar Usuario</h2>
+    <form [formGroup]="AgregarUsuarioForm" (ngSubmit)="AgregarUsuario()">
+      <div class="form-group">
+        <label for="descripcion">Nombre:</label>
+        <input type="text" formControlName="nombre" placeholder="Nombre" name="nombre" class="form-control" id="nombre">
+        <label for="descripcion">Contraseña:</label>
+        <input type="password" formControlName="password" placeholder="Contraseña" name="password" class="form-control" id="password">
+        <div formGroupName="tipo">
+          <label for="codigo">Tipo:</label>
+          <select name="codigo" id="codigo" class="custom-select form-control" formControlName="codigo">
+            <option value="0" selected>Seleccione un tipo</option>
+            <option *ngFor="let tipo of tipos" value="{{tipo.codigo}}">{{tipo.descripcion}}</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-success">Confirmar</button>
+      <button [routerLink]="['/list-usuario']" class="btn btn-danger">Cancelar</button>
+    </form>
+  </div>
+</div>

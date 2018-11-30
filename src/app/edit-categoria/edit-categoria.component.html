@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="col-md-12">
+    <h2 class="text-center">Actualizar Categoria</h2>
+    <form [formGroup]="ActualizarCategoriaForm" (ngSubmit)="ActualizarCategoria()">
+      <div class="form-group">
+        <label for="codigo">Código:</label>
+        <input type="text" formControlName="codigo" placeholder="Codigó" name="codigo" class="form-control" id="codigo" readonly>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" formControlName="descripcion" placeholder="Descripción" name="desccripcion" class="form-control" id="descripcion">
+      </div>
+      <button class="btn btn-success">Confirmar</button>
+      <button [routerLink]="['/list-categoria']" class="btn btn-danger">Cancelar</button>
+    </form>
+  </div>
+</div>

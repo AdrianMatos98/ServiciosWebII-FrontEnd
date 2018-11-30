@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="col-md-12">
+    <h2 class="my-title">Listado usuarios</h2>
+    <div ngbDropdown >
+      <button ngbDropdownToggle class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Listado de tipos
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+        <a *ngFor="let tipo of tipos" class="dropdown-item" (click)="FiltrarXTipo(tipo.codigo)">{{tipo.descripcion}}</a>
+      </div>
+    </div>
+    <button class="btn btn-danger"  (click)="FiltrarXEstado(0)">Listar eliminados</button>
+    <button class="btn btn-primary" style="margin-left:20px;" (click)="FiltrarXEstado(1)">Listar actuales</button>
+    <button [routerLink]="['/home']" class="btn btn-primary my-btn" > Volver</button>
+    <button class="btn btn-primary my-btn" (click)="AgregarUsuario()"> Agregar</button>
+    
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th colspan="3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario.codigo}}</td>
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.tipo.descripcion}}</td>
+          <td><button class="btn btn-danger" (click)="ActualizarUsuario(usuario)" >Actualizar</button></td>
+          <td *ngIf="!UsuarioElimnado(usuario)"><button class="btn btn-danger" (click)="EliminarUsuario(usuario)" >Eliminar</button></td>
+          <td *ngIf="UsuarioElimnado(usuario)" ><button class="btn btn-danger" (click)="RestaurarUsuario(usuario)" >Restaurar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="col-md-12">
+    <h2 class="text-center">Agregar Tipo</h2>
+    <form [formGroup]="AgregarTipoForm" (ngSubmit)="AgregarTipo()">
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" formControlName="descripcion" placeholder="Descripcion" name="desccripcion" class="form-control"
+          id="descripcion">
+      </div>
+      <button class="btn btn-success">Confirmar</button>
+      <button [routerLink]="['/list-tipo']" class="btn btn-danger">Cancelar</button>
+    </form>
+  </div>
+</div>

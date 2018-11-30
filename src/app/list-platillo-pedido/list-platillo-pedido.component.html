@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div class="col-md-12">
+    <h2 class="my-title">{{categoria.descripcion}}</h2>
+    
+    
+    <button (click)="Volver()" class="btn btn-primary my-btn" > Volver</button>
+    
+    <table class="table">
+      <tbody>
+        <tr class="row" >
+            <div (click)="SeleccionarPlatillo(platillo)" class="card col-md-4" *ngFor="let platillo of platillos">
+                <img class="card-img-top"  alt="Card image cap" src="{{platillo.imagen}}">
+                <div class="card-body">
+                  <h5 class="card-title">{{platillo.nombre}}</h5>
+                  <p class="card-text">Precio: {{platillo.precio}}</p>
+                </div>
+              </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

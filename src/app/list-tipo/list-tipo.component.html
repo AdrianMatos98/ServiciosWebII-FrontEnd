@@ -1,0 +1,29 @@
+<div class="container">
+
+  <div class="col-md-12">
+    <h2 class="my-title">Listado tipos</h2>
+    <button class="btn btn-danger"  (click)="ListarTipo(0)">Listar eliminados</button>
+    <button class="btn btn-primary" style="margin-left:20px;" (click)="ListarTipo(1)">Listar actuales</button>
+    <button [routerLink]="['/home']" class="btn btn-primary my-btn" > Volver</button>
+    <button class="btn btn-primary my-btn" (click)="AgregarTipo()"> Agregar</button>
+    
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr >
+          <th>Código</th>
+          <th>Descripción</th>
+          <th colspan="3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tipo of tipos">
+          <td>{{tipo.codigo}}</td>
+          <td>{{tipo.descripcion}}</td>
+          <td><button class="btn btn-danger" (click)="ActualizarTipo(tipo)" >Actualizar</button></td>
+          <td *ngIf="!TipoElimnado(tipo)"><button class="btn btn-danger" (click)="EliminarTipo(tipo)" >Eliminar</button></td>
+          <td *ngIf="TipoElimnado(tipo)" ><button class="btn btn-danger" (click)="RestaurarTipo(tipo)" >Restaurar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
